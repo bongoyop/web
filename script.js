@@ -2,52 +2,53 @@ const title = document.getElementById("title");
 const cat = document.getElementById("cat");
 const btn = document.getElementById("btn");
 
-// 10 mensajes (el primero SIEMPRE español)
+// Si alguno sale null, tu HTML no coincide o el script no está cargando bien
+console.log("JS OK:", { title, cat, btn });
+
 const messages = [
-  { text: "Hola Mundo", flag: "🇪🇸" },              // Español
-  { text: "Hello world", flag: "🇬🇧" },             // Inglés (UK)
-  { text: "Bonjour le monde", flag: "🇫🇷" },        // Francés
-  { text: "Hallo Welt", flag: "🇩🇪" },              // Alemán
-  { text: "Ciao mondo", flag: "🇮🇹" },              // Italiano
-  { text: "Olá mundo", flag: "🇵🇹" },               // Portugués (PT)
-  { text: "こんにちは世界", flag: "🇯🇵" },            // Japonés
-  { text: "안녕하세요 세계", flag: "🇰🇷" },            // Coreano
-  { text: "مرحبا بالعالم", flag: "🇸🇦" },           // Árabe (Arabia Saudita)
-  { text: "Привет, мир", flag: "🇷🇺" },             // Ruso
+  { text: "Hola Mundo", flag: "🇪🇸" },
+  { text: "Hello world", flag: "🇬🇧" },
+  { text: "Bonjour le monde", flag: "🇫🇷" },
+  { text: "Hallo Welt", flag: "🇩🇪" },
+  { text: "Ciao mondo", flag: "🇮🇹" },
+  { text: "Olá mundo", flag: "🇵🇹" },
+  { text: "こんにちは世界", flag: "🇯🇵" },
+  { text: "안녕하세요 세계", flag: "🇰🇷" },
+  { text: "مرحبا بالعالم", flag: "🇸🇦" },
+  { text: "Привет, мир", flag: "🇷🇺" },
 ];
 
-// 10 gatitos ASCII (uno por mensaje)
 const cats = [
-  String.raw` /\_/\  
+` /\\_/\\  
 ( o.o ) 
  > ^ <`,
-  String.raw` /\_/\  
+` /\\_/\\  
 ( -.- ) 
  > ^ <  zZz`,
-  String.raw` /\_/\      
+` /\\_/\\      
 ( o.o )  meow!
- /   \`,
-  String.raw` /\_/\   _
+ /   \\`,
+` /\\_/\\   _
 ( o.o ) ( )
  > ^ <  /`,
-  String.raw` /\_/\  ___
-( o.o )/   \
- > ^ < \___/`,
-  String.raw` /\_/\   __
+` /\\_/\\  ___
+( o.o )/   \\
+ > ^ < \\___/`,
+` /\\_/\\   __
 ( o.o ) (  )
  > ^ <  ||`,
-  String.raw` /\_/\  ~~
+` /\\_/\\  ~~
 ( o.o )  ))
  > ^ <`,
-  String.raw` /\_/\   /\ 
-( o.o ) //\\
- > ^ <  \_/`,
-  String.raw` /\_/\   .-.
+` /\\_/\\   /\\ 
+( o.o ) //\\\\
+ > ^ <  \\_/`,
+` /\\_/\\   .-.
 ( o.o ) ( )
- > ^ <  `-’`,
-  String.raw` /\_/\   ____
-( o.o ) / __ \
- > ^ <  \____/`,
+ > ^ <  '-'`,
+` /\\_/\\   ____
+( o.o ) / __ \\
+ > ^ <  \\____/`,
 ];
 
 let i = 0;
@@ -63,5 +64,4 @@ btn.addEventListener("click", () => {
   render(i);
 });
 
-// Estado inicial: Español
 render(0);
