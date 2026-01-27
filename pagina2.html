@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASCII</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Ajustes para que la página 2 sea "solo el ASCII" */
+      main {
+        width: min(1200px, calc(100% - 16px));
+        padding: 12px;
+      }
+      pre.big-ascii {
+        margin: 0 auto;
+        padding: 12px;
+        background: rgba(0,0,0,0.22);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        overflow: auto;
+        max-width: 100%;
+
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 10px;
+        line-height: 1.05;
+        color: #d7e6ff;
+        white-space: pre; /* respeta espacios */
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <pre id="ascii" class="big-ascii" aria-label="Arte ASCII"></pre>
+    </main>
+
+    <script>
+      // Carga el archivo morascii.txt y lo inserta en el <pre>
+      fetch("morascii.txt")
+        .then((r) => {
+          if (!r.ok) throw new Error("No se pudo cargar morascii.txt");
+          return r.text();
+        })
+        .then((txt) => {
+          document.getElementById("ascii").textContent = txt;
+        })
+        .catch((err) => {
+          document.getElementById("ascii").textContent =
+            "Error cargando el ASCII: " + err.message;
+          console.error(err);
+        });
+    </script>
+  </body>
+</html>
