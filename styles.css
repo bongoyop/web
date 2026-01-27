@@ -72,3 +72,42 @@ button {
 
 button:hover { background: rgba(255,255,255,0.12); }
 .hint { margin: 10px 0 0; color: var(--muted); }
+
+.rainbow-title{
+  position: fixed;            /* siempre encima */
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 9999;
+
+  text-align: center;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 2.4rem;          /* más grande */
+  font-weight: 800;
+  letter-spacing: 0.6px;
+
+  background: linear-gradient(
+    90deg,
+    #ff4d4d,
+    #ffa94d,
+    #fff04d,
+    #4dff88,
+    #4dd2ff,
+    #8b5cff,
+    #ff4dd2,
+    #ff4d4d
+  );
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  animation: hueShift 4s ease-in-out infinite;
+}
+
+@keyframes hueShift{
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
