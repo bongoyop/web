@@ -1,23 +1,27 @@
 <!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mi primera web</title>
-<link rel="stylesheet" href="styles.css" />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mi primera web</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
+  <body>
+    <main class="card">
+      <h1 id="title">Hola Mundo 🇪🇸</h1>
 
-<body>
-<main class="card">
-<h1 id="title">Hola mundo 👋</h1>
-<p>Si estás viendo esto, tu página ya está funcionando.</p>
+      <pre id="cat" class="ascii" aria-label="Gatito ASCII">
+ /\_/\  
+( o.o ) 
+ > ^ <
+      </pre>
 
+      <button id="btn" type="button">Cambiar idioma y gatito</button>
 
-<button id="btn">Cambiar mensaje</button>
-</main>
+      <p class="hint">Tip: cada click cambia el mensaje + el gatito.</p>
+    </main>
 
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
