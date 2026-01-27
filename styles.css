@@ -1,10 +1,9 @@
 :root {
-  --bg: #06162f;        /* azul marino */
-  --panel: #0b2346;     /* panel */
-  --text: #eaf2ff;      /* texto principal */
-  --muted: #b8c7e6;     /* texto secundario */
-  --border: #163a6b;    /* borde */
-  --shadow: rgba(0, 0, 0, 0.35);
+  --bg: #06162f;
+  --panel: #0b2346;
+  --text: #eaf2ff;
+  --muted: #b8c7e6;
+  --border: #163a6b;
 }
 
 * { box-sizing: border-box; }
@@ -16,28 +15,26 @@ body {
   place-items: center;
   background: radial-gradient(900px 500px at 30% 20%, #0d2d5a 0%, var(--bg) 55%);
   color: var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "Arial Narrow", Arial, sans-serif;
 }
 
-.card {
+main {
   width: min(720px, calc(100% - 32px));
   background: linear-gradient(180deg, var(--panel), rgba(11,35,70,0.88));
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 22px 22px 18px;
-  box-shadow: 0 18px 40px var(--shadow);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  text-align:center;
+  button { display: inline-block; };
 }
 
-h1 {
-  margin: 0 0 14px;
-  font-size: 1.7rem;
-  letter-spacing: 0.2px;
-}
+h1 { margin: 0 0 14px; font-size: 1.7rem; }
 
-.ascii {
-  margin: 0;
+pre.ascii {
+  margin: 0 auto;              /* centra la caja del pre */
   padding: 18px 16px;
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(0,0,0,0.22);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   overflow: auto;
@@ -45,6 +42,21 @@ h1 {
   font-size: 14px;
   line-height: 1.2;
   color: #d7e6ff;
+
+  width: fit-content;          /* la caja se ajusta al contenido */
+  max-width: 100%;             /* no se sale en pantallas chicas */
+  text-align: center;          /* centra las líneas del ASCII */
+}
+
+/* Animación de “hovering” */
+.floating {
+  animation: floaty 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
 }
 
 button {
@@ -59,10 +71,4 @@ button {
 }
 
 button:hover { background: rgba(255,255,255,0.12); }
-button:active { transform: translateY(1px); }
-
-.hint {
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
+.hint { margin: 10px 0 0; color: var(--muted); }
