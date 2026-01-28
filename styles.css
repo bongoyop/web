@@ -6,46 +6,58 @@
   --border: #163a6b;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: radial-gradient(900px 500px at 30% 20%, #0d2d5a 0%, var(--bg) 55%);
+  background: radial-gradient(
+    900px 500px at 30% 20%,
+    #0d2d5a 0%,
+    var(--bg) 55%
+  );
   color: var(--text);
   font-family: "Arial Narrow", Arial, sans-serif;
 }
 
 main {
   width: min(720px, calc(100% - 32px));
-  background: linear-gradient(180deg, var(--panel), rgba(11,35,70,0.88));
+  background: linear-gradient(180deg, var(--panel), rgba(11, 35, 70, 0.88));
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 22px 22px 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-  text-align:center;
-  button { display: inline-block; };
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  button {
+    display: inline-block;
+  }
 }
 
-h1 { margin: 0 0 14px; font-size: 1.7rem; }
+h1 {
+  margin: 0 0 14px;
+  font-size: 1.7rem;
+}
 
 pre.ascii {
-  margin: 0 auto;              /* centra la caja del pre */
+  margin: 0 auto; /* centra la caja del pre */
   padding: 18px 16px;
-  background: rgba(0,0,0,0.22);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   overflow: auto;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
   font-size: 14px;
   line-height: 1.2;
   color: #d7e6ff;
 
-  width: fit-content;          /* la caja se ajusta al contenido */
-  max-width: 100%;             /* no se sale en pantallas chicas */
-  text-align: center;          /* centra las líneas del ASCII */
+  width: fit-content; /* la caja se ajusta al contenido */
+  max-width: 100%; /* no se sale en pantallas chicas */
+  text-align: center; /* centra las líneas del ASCII */
 }
 
 /* Animación de “hovering” */
@@ -55,26 +67,36 @@ pre.ascii {
 }
 
 @keyframes floaty {
-  0%, 100% { transform: translateY(0px); }
-  50%      { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 button {
   margin-top: 14px;
   padding: 10px 14px;
-  border: 1px solid rgba(255,255,255,0.14);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--text);
   cursor: pointer;
   font-weight: 600;
 }
 
-button:hover { background: rgba(255,255,255,0.12); }
-.hint { margin: 10px 0 0; color: var(--muted); }
+button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.hint {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
 
-.rainbow-title{
-  position: fixed;            /* siempre encima */
+.rainbow-title {
+  position: fixed; /* siempre encima */
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
@@ -83,7 +105,7 @@ button:hover { background: rgba(255,255,255,0.12); }
 
   text-align: center;
   font-family: "Arial Narrow", Arial, sans-serif;
-  font-size: 2.4rem;          /* más grande */
+  font-size: 2.4rem; /* más grande */
   font-weight: 800;
   letter-spacing: 0.6px;
 
@@ -106,8 +128,74 @@ button:hover { background: rgba(255,255,255,0.12); }
   animation: hueShift 4s ease-in-out infinite;
 }
 
-@keyframes hueShift{
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes hueShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
+.ticker {
+  margin: 14px auto 0;
+  width: min(1200px, calc(100% - 16px));
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 10px 0;
+}
+
+.ticker__track {
+  display: flex;
+  width: max-content;
+  gap: 60px;
+  align-items: center;
+
+  animation: tickerMove 16s linear infinite;
+  will-change: transform;
+}
+
+.ticker__text {
+  white-space: nowrap;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.6px;
+  color: rgba(234, 242, 255, 0.92);
+  text-transform: uppercase;
+}
+
+@keyframes tickerMove {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Accesibilidad: si el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none;
+    justify-content: center;
+  }
+}
+
+.back-btn{
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(234, 242, 255, 0.95);
+  text-decoration: none;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  fo
