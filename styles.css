@@ -188,16 +188,25 @@ button:hover {
   }
 }
 
-.back-btn{
+.back-btn {
   display: inline-block;
   margin: 0 0 12px;
   padding: 10px 14px;
   border-radius: 12px;
 
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(234, 242, 255, 0.95);
   text-decoration: none;
   font-family: "Arial Narrow", Arial, sans-serif;
-  fo
+  font-weight: 700;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.back-btn:active {
+  transform: translateY(1px);
+}
 
