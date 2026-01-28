@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -14,13 +14,14 @@
       pre.big-ascii {
         margin: 0 auto;
         padding: 12px;
-        background: rgba(0,0,0,0.22);
-        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(0, 0, 0, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 14px;
         overflow: auto;
         max-width: 100%;
 
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
         font-size: 10px;
         line-height: 1.05;
         color: #d7e6ff;
@@ -31,7 +32,16 @@
 
   <body>
     <main>
+      <a class="back-btn" href="index.html">← Volver al inicio</a>
       <pre id="ascii" class="big-ascii" aria-label="Arte ASCII"></pre>
+      <div class="ticker" aria-label="Mensaje en movimiento">
+        <div class="ticker__track">
+          <span class="ticker__text"
+            >"si miras al abismo, el abismo te devuelve la mirada" - nube
+            q.c.</span
+          >
+        </div>
+      </div>
     </main>
 
     <script>
