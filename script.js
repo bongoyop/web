@@ -157,11 +157,24 @@ function randomIdxExcluding(exclude, max) {
   return r;
 }
 
-btn.addEventListener("click", () => {
+let lastTapAt = 0;
+
+function nextPair() {
   const next = randomIdxExcluding(lastIdx, messages.length);
   lastIdx = next;
   render(next);
+}
+
+btn.addEventListener("pointerup", () => {
+  lastTapAt = Date.now();
+  nextPair();
+});
+
+btn.addEventListener("click", () => {
+  if (Date.now() - lastTapAt < 400) return;
+  nextPair();
 });
 
 // Estado inicial: Español
 render(0);
+
