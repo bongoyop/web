@@ -1,33 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ola</title>
+    <title>cada vez queda menos</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
-    <h2 class="rainbow-title">definición circular</h2>
-
-    <main>
-      <h1 id="title">Hola Mundo 🇪🇸</h1>
-
-      <pre id="cat" class="ascii floating" aria-label="Gatitos ASCII">
- /\_/\  
-( o.o ) 
- > ^ <
-      </pre>
-
-      <button id="btn" type="button">dame otro cro</button>
-      <p class="hint">con cada click aparece un cro de algún lugar del mundo (menos israel)</p>
-
-      <p class="hint">
-        <a href="pagina2.html">pincha aquí para ser oxervada</a>
-      </p>
+  <body class="countdown-page">
+    <main class="countdown-main" aria-label="Cuenta regresiva">
+      <p class="countdown-kicker">faltan</p>
+      <section class="countdown-grid" aria-live="polite">
+        <div class="time-card">
+          <span id="days" class="time-number">000</span>
+          <span class="time-label">días</span>
+        </div>
+        <div class="time-card">
+          <span id="hours" class="time-number">00</span>
+          <span class="time-label">horas</span>
+        </div>
+        <div class="time-card">
+          <span id="minutes" class="time-number">00</span>
+          <span class="time-label">minutos</span>
+        </div>
+        <div class="time-card">
+          <span id="seconds" class="time-number">00</span>
+          <span class="time-label">segundos</span>
+        </div>
+      </section>
+      <p class="countdown-date">para el desmadre parte 2</p>
     </main>
 
-    <!-- IMPORTANTE: script al final + defer -->
-    <script src="script.js" defer></script>
+    <nav class="bottom-nav" aria-label="Accesos a otras páginas">
+      <a href="pagina2.html">pincha aquí para ser oxervada</a>
+      <a href="pagina1.html">dame un cro</a>
+    </nav>
+
+    <script>
+      const targetDate = new Date("2027-04-09T19:00:00");
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      function formatTwoDigits(value) {
+        return String(value).padStart(2, "0");
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          daysEl.textContent = "000";
+          hoursEl.textContent = "00";
+          minutesEl.textContent = "00";
+          secondsEl.textContent = "00";
+          document.querySelector(".countdown-kicker").textContent = "llegó el momento";
+          return;
+        }
+
+        const totalSeconds = Math.floor(distance / 1000);
+        const days = Math.floor(totalSeconds / (60 * 60 * 24));
+        const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+        const minutes = Math.floor((totalSeconds / 60) % 60);
+        const seconds = totalSeconds % 60;
+
+        daysEl.textContent = String(days).padStart(3, "0");
+        hoursEl.textContent = formatTwoDigits(hours);
+        minutesEl.textContent = formatTwoDigits(minutes);
+        secondsEl.textContent = formatTwoDigits(seconds);
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
   </body>
 </html>
